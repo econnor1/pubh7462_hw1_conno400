@@ -95,4 +95,46 @@ standard deviation of 14.06 millimeters. In addition, the average bill
 length of a penguin is 43.92 millimeters with a standard deviation of
 5.46 millimeters.
 
-## 2.2.2
+## 2.2.2 Visualization
+
+``` r
+penguin.df %>%
+  ggplot(aes(x = bill_length_mm, y = flipper_length_mm, color = species)) +
+  geom_point() +
+  xlab("Bill Length (mm)") +
+  ylab("Flipper Length (mm)") +
+  ggtitle("Penguins Flipper Length (mm) vs. Bill Length (mm) by Species") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5),
+        axis.title.y = element_text(angle = 0, vjust = 0.5)) +
+  scale_color_discrete(name = "Species")
+```
+
+<img src="Homework-1---Eric-Connor_files/figure-gfm/unnamed-chunk-4-1.png" width="90%" style="display: block; margin: auto;" />
+
+``` r
+penguin.df %>%
+  ggplot(aes(x = bill_length_mm, y = flipper_length_mm, color = species)) +
+  geom_point() +
+  xlab("Bill Length (mm)") +
+  ylab("Flipper Length (mm)") +
+  ggtitle("Penguins Flipper Length (mm) vs. Bill \nLength (mm) by Species") +
+  theme_bw() +
+  facet_wrap(~species) +
+  theme(plot.title = element_text(hjust = 0.5),
+        axis.title.y = element_text(angle = 0, vjust = 0.5),
+        legend.position = "none") +
+  scale_color_discrete(name = "Species")
+```
+
+<img src="Homework-1---Eric-Connor_files/figure-gfm/unnamed-chunk-4-2.png" width="90%" style="display: block; margin: auto;" />
+
+From Plot 1, it can be observed that Adelie species penguins tend to
+have the shorter bill and the smallest flipper, whereas Gentoo penguins
+typically have a much larger flipper length and a longer bill length. In
+contrast, Chinstrap penguins tend to have nearly the same flipper length
+as Adelie penguins but have substantially longer bill lengths than these
+penguins. In addition, from Plot 2, each species of penguins has its own
+cluster of flipper length and bill length. These species of penguins
+typically are well distinguished on Antarctica because of these bill
+length differences and flipper length differences.
